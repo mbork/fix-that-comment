@@ -1,0 +1,15 @@
+#+TITLE: Find stale comments
+
+Suppose you have this JavaScript code:
+#+begin_src js
+  // Say hello to the world
+  console.log('Hello world!')
+#+end_src
+and at some point decide to make the message slightly cooler:
+#+begin_src js
+  // Say hello to the world
+  console.log('Allons-y!')
+#+end_src
+but forget to update the comment?
+
+If yes, this script is for you.  It is intended to be run as a [[https://git-scm.com/docs/githooks#_pre_commit][pre-commit]] hook and alert you if you changed some code but forgot to update the comment preceding it.  It is intentionally simple so that it can be language-agnostic, so it assumes that a comment pertains to code between itself and the first empty line.
