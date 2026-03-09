@@ -1,0 +1,12 @@
+{
+  "name": "fix-that-comment",
+  "version": "0.0.1",
+  "description": "A script to be used in pre-commit hook to prevent changing code without changing the corresponding comment",
+  "license": "MIT",
+  "author": "Marcin mbork Borkowski",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
