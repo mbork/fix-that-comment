@@ -7,7 +7,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test",
+    "fixtures": "node tests/generate-fixtures.ts"
   },
   "dependencies": {
     "parse-diff": "^0.11.1",

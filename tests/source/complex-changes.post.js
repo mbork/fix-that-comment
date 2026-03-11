@@ -1,0 +1,67 @@
+console.log('section 1 - updated')
+
+console.log('spacer 1')
+console.log('spacer 2')
+console.log('spacer 3')
+console.log('spacer 4')
+console.log('spacer 5')
+console.log('spacer 6')
+console.log('spacer 7')
+console.log('spacer 8')
+console.log('spacer 9')
+console.log('spacer 10')
+
+// Updated comment for section 2
+console.log('section 2 - updated')
+
+console.log('spacer 11')
+console.log('spacer 12')
+console.log('spacer 13')
+console.log('spacer 14')
+console.log('spacer 15')
+console.log('spacer 16')
+console.log('spacer 17')
+console.log('spacer 18')
+console.log('spacer 19')
+console.log('spacer 20')
+
+// Stale comment for section 3
+console.log('section 3 - updated')
+
+console.log('spacer 21')
+console.log('spacer 22')
+console.log('spacer 23')
+console.log('spacer 24')
+console.log('spacer 25')
+console.log('spacer 26')
+console.log('spacer 27')
+console.log('spacer 28')
+console.log('spacer 29')
+console.log('spacer 30')
+
+// Stale but unstaged comment for section 4
+console.log('section 4')
+
+console.log('spacer 31')
+console.log('spacer 32')
+console.log('spacer 33')
+console.log('spacer 34')
+console.log('spacer 35')
+console.log('spacer 36')
+console.log('spacer 37')
+console.log('spacer 38')
+console.log('spacer 39')
+console.log('spacer 40')
+
+// Stale comment for section 5, with a change far from the comment
+console.log('section 5')
+console.log('spacer 41')
+console.log('spacer 42')
+console.log('spacer 43')
+console.log('spacer 44')
+console.log('spacer 45 - updated')
+console.log('spacer 46')
+console.log('spacer 47')
+console.log('spacer 48')
+console.log('spacer 49')
+console.log('spacer 50')
