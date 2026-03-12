@@ -3,7 +3,7 @@ import parseDiff from 'parse-diff';
 
 // * Types
 
-interface OldLine {
+export interface OldLine {
     content: string;
     type: 'comment' | 'code' | 'empty';
     changed: boolean;
@@ -34,6 +34,44 @@ export function annotate_lines(contents: string[], chunks: parseDiff.Chunk[]): O
     return lines;
 }
 
+// Returns 1-based line numbers of stale comment blocks: consecutive comment
+// lines where none were changed, but the following code block was changed.
+export function find_stale_comments(lines: OldLine[]): number[] {
+    const stale: number[] = [];
+    let i = 0;
+
+	// Iterate over all lines
+    while (i < lines.length) {
+		// Find the beginning of a comment
+        if (lines[i].type !== 'comment') {
+            i++;
+            continue;
+        }
+
+        // Collect the comment and check if any line in it changed.
+        const block_start = i;
+        let comment_changed = false;
+        while (i < lines.length && lines[i].type === 'comment') {
+            if (lines[i].changed) {
+                comment_changed = true;
+            }
+            i++;
+        }
+
+        // If the comment was untouched, check if the following code was changed.
+        if (!comment_changed) {
+            while (i < lines.length && lines[i].type !== 'empty') {
+                if (lines[i].changed) {
+                    stale.push(block_start + 1);
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+    return stale;
+}
+
 // * Main
 
 async function main(): Promise<void> {
@@ -55,9 +93,11 @@ async function main(): Promise<void> {
             continue;
         }
 
-        const oldLines = annotate_lines(oldContent.split('\n'), file.chunks);
-
-        console.dir(oldLines, {depth: null});
+        const lines = annotate_lines(oldContent.split('\n'), file.chunks);
+        const stale = find_stale_comments(lines);
+        for (const line_no of stale) {
+            console.error(`${filename}:${line_no}: stale comment`);
+        }
     }
 }
 
